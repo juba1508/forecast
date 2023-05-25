@@ -17,7 +17,7 @@
                 "cloud_area_fraction": "%",
                 "precipitation_amount": "mm",
                 "relative_humidity": "%",
-                "wind_from_direction": "degrees",
+            "wind_from_direction": "degrees",
                 "wind_speed": "m/s"
             }
         },
