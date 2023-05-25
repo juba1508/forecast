@@ -51,7 +51,7 @@ async function showForecast(url, latlng) {
             <tr><td>Cloud area fraction (%)</td><td>${current.cloud_area_fraction}</td></tr>
             <tr><td>Relative humidity</td><td>${current.relative_humidity}</td></tr>
             <tr><td>Wind from direction (°C)</td><td>${current.wind_from_direction}</td></tr>
-            <tr><td>Wind speed</td><td>>${current.wind_speed}</td></tr>
+            <tr><td>Wind speed</td><td>${current.wind_speed}</td></tr>
         </table>
     `;
 
@@ -59,6 +59,10 @@ async function showForecast(url, latlng) {
     // Wettersymbole hinzufügen
     for (let i=0; i<=24; i+=3) {
         console.log(timeseries[i]);
+        let icon = timeseries [i].data.next_1_hours.summary.symbol_code;
+        let image = `icons/${icon}.svg`
+        markup += `<img src="${image}" style="width: 32px;" title="${timeseries[i].time.toLocaleString()}">`
+        console.log(icon, image);
     }
     L.popup().setLatLng(latlng).setContent(markup).openOn(map);
 }
@@ -68,5 +72,4 @@ map.on("click", function(evt){
     console.log(evt.latlng.lat);
     let url = (`https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=${evt.latlng.lat}&lon=${evt.latlng.lat}`);
     showForecast(url, evt.latlng);
-})
-
+});
