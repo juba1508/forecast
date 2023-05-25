@@ -62,14 +62,14 @@ async function showForecast(url, latlng) {
         let icon = timeseries [i].data.next_1_hours.summary.symbol_code;
         let image = `icons/${icon}.svg`
         markup += `<img src="${image}" style="width: 32px;" title="${timeseries[i].time.toLocaleString()}">`
-        console.log(icon, image);
+        //console.log(icon, image);
     }
     L.popup().setLatLng(latlng).setContent(markup).openOn(map);
 }
 
 //auf Kartenklick reagieren
 map.on("click", function(evt){
-    console.log(evt.latlng.lat);
+    //console.log(evt.latlng.lat);
     let url = (`https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=${evt.latlng.lat}&lon=${evt.latlng.lat}`);
     showForecast(url, evt.latlng);
 });
