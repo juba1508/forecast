@@ -64,13 +64,13 @@ async function showForecast(url, latlng) {
         markup += `<img src="${image}" style="width: 32px;" title="${timeseries[i].time.toLocaleString()}">`
         //console.log(icon, image);
     }
-    L.popup().setLatLng(latlng).setContent(markup).openOn(map);
+    L.popup().setLatLng(latlng).setContent(markup).openOn(themaLayer.forecast);
 }
 
 //auf Kartenklick reagieren
 map.on("click", function(evt){
     //console.log(evt.latlng.lat);
-    let url = (`https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=${evt.latlng.lat}&lon=${evt.latlng.lat}`);
+    let url = (`https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=${evt.latlng.lat}&lon=${evt.latlng.lng}`);
     showForecast(url, evt.latlng);
 });
 
