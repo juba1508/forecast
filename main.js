@@ -50,7 +50,8 @@ async function showForecast(url, latlng) {
             <tr><td>Wind speed</td><td>>${current.wind_speed}</td></tr>
         </table>
     `;
-
+    //
+    for
     L.popup().setLatLng(latlng).setContent(markup).openOn(map);
 }
 
